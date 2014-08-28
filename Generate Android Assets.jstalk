@@ -1,6 +1,3 @@
-// Generate Android assets from all slices in current page (shift cmd a)
-// Assumes pixel count in Sketch is xhdpi, so 1dp=2px
-// Saves off all assets to path to current document + drawable-{mdpi,hdpi,xhdpi,xxhdpi,xxxhdpi}
 
 var library = {}
 library.sandbox = {
@@ -72,8 +69,7 @@ library.sandbox = {
 	    "mdpi":0.5,
 	    "hdpi": 0.75,
 	    "xhdpi": 1,
-	    "xxhdpi": 1.5,
-	    "xxxhdpi": 2};
+	    "xxhdpi": 1.5};
 	var baseDensityFactor = factors[baseDensityName];
 	var result = {};
 	for (var key in factors){
@@ -142,7 +138,7 @@ function get_cwd(){
 function get_dir_from_prompt(){
 
     var panel = [NSOpenPanel openPanel];
-    [panel setMessage:"Where do you want to place your assets?"];
+    [panel setMessage:"Where to place the assets? (Show me your github folder baby)"];
     [panel setCanChooseDirectories: true];
     [panel setCanChooseFiles: false];
     [panel setCanCreateDirectories: true];
@@ -159,7 +155,7 @@ function get_dir_from_prompt(){
 
 function askForDefaultDensity(){
     var selectedItemIndex = 0;
-    var items = ["mdpi","hdpi","xhdpi","xxhdpi","xxxhdpi"];
+    var items = ["mdpi","hdpi","xhdpi","xxhdpi"];
 
     var accContainer = [[NSView alloc] initWithFrame:NSMakeRect(0,0,200,25)];
 
@@ -170,7 +166,7 @@ function askForDefaultDensity(){
     [accContainer addSubview:accessory];
 
     var alert = [[NSAlert alloc] init];
-    [alert setMessageText:"What should be the base density for this Sketch document≈?"];
+    [alert setMessageText:"Whats the Basedensity of your file?"];
     [alert addButtonWithTitle:'OK']
     [alert addButtonWithTitle:'Cancel']
     [alert setAccessoryView:accContainer]
